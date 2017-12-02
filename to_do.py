@@ -1,22 +1,42 @@
+#show help
+def show_help():
+    print("Enter 'DONE' to stop adding items.")
+    print("Enter 'SHOW' to print current list")
+    print("Enter 'HELP' to print instructions")
+
+#show current list
+def show_list(list):
+    print("List: ")
+    for item in list:
+        print(" " + item)
+
 # put new tings into the list, one at a time
 def add_to_list(list):
     to_do = None
-    # enter the word DONE to quit, in all caps
-    while to_do != 'DONE':
 
-        to_do = input('Enter something To Do: ')
+    while True:
+
+        to_do = input('> ')
+
+        # enter the word DONE to quit, in all caps
         if to_do == 'DONE':
             break
+        elif to_do == 'SHOW':
+            show_list(list)
+        elif to_do == 'HELP':
+            show_help()
         else:
             list.append(to_do)
+
     # once done show list
     return list
 
 def run_app():
-    headline = "Things to do:\n "
     list = []
+    print("Enter things To Do: ")
+    show_help()
     add_to_list(list)
-    print(headline + "\n ".join(list))
+    show_list(list)
 
 # run the script
 run_app()
