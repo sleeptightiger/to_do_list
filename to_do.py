@@ -4,13 +4,14 @@ def is_okay(item):
 
 #show help
 def show_help():
-    print("""    Enter 'DONE' to stop adding items.
-    Enter 'SHOW' to print current list.
-    Enter 'HELP' to print instructions.""")
+    print("""    Enter things To Do:
+    Type 'DONE' to stop adding items.
+    Type 'SHOW' to print current list.
+    Type 'HELP' to print instructions.""")
 
 #show current list
 def show_list(list):
-    print("List: ")
+    print("Here's your List: ")
     for item in list:
         print(" " + item)
 
@@ -46,12 +47,28 @@ def query_user(list):
     # once done show list
     return list
 
+def write_to_file(list):
+    file = open('to_do_list.txt', 'w')
+    for item in list:
+        file.write(item + "\n")
+    file.close()
+
+def read_from_file(list):
+    file = open("to_do_list.txt", "r")
+    file_list = file.readlines()
+    file.close()
+    for line in file_list:
+        list.append(line.rstrip("\n"))
+    show_list(list)
+    return list
+
 def run_app():
     list = []
-    print("Enter things To Do: ")
+    list = read_from_file(list)
     show_help()
-    query_user(list)
+    list = query_user(list)
     show_list(list)
+    write_to_file(list)
 
 # run the script
 run_app()
