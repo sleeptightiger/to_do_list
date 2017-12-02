@@ -1,3 +1,7 @@
+#test for acceptible item
+def is_okay(item):
+    return item != ""
+
 #show help
 def show_help():
     print("""    Enter 'DONE' to stop adding items.
@@ -13,8 +17,11 @@ def show_list(list):
 # put new tings into the list, one at a time
 def add_to_list(item, list):
     list.append(item)
-    print ("Added {}, your To Do List now has {} things to do.".format(item, len(list)))
     return list
+
+def show_add(item, list):
+    print ("Added {}, your To Do List now has {} things to do.".format(item, len(list)))
+
 
 #ask for, process input
 def query_user(list):
@@ -23,7 +30,6 @@ def query_user(list):
     while True:
 
         to_do = input('> ')
-
         # enter the word DONE to quit, in all caps
         if to_do == 'DONE':
             break
@@ -31,8 +37,11 @@ def query_user(list):
             show_list(list)
         elif to_do == 'HELP':
             show_help()
-        else:
+        elif is_okay(to_do):
             list = add_to_list(to_do, list)
+            show_add(to_do, list)
+        else:
+            continue
 
     # once done show list
     return list
