@@ -60,4 +60,4 @@ const runApp = () => {
   alert(showList(list));
 }
 
-runApp();
+//runApp();
