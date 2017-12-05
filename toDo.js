@@ -34,7 +34,6 @@ addButton.addEventListener('click', () => {
 });
 
 list.addEventListener('change', (event) => {
-
   if(event.target.tagName == 'INPUT') {
     let item = event.target.parentNode.children[0];
     if(item.style.textDecoration == "none") {
@@ -47,8 +46,10 @@ list.addEventListener('change', (event) => {
 
 });
 
-// removeButton.addEventListener('click', () => {
-//   const toDo = document.querySelectorAll('ul li')[0];
-//   list.removeChild(toDo);
-//   newToDo.value = '';
-// });
+list.addEventListener('click', (event) => {
+  if(event.target.tagName == 'BUTTON') {
+    let item = event.target.parentNode.parentNode;
+    list.removeChild(item);
+  }
+
+});
