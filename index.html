@@ -5,12 +5,19 @@
     <title>To Do!!</title>
   </head>
   <body>
-    <div class="toDoContainer">
+    <div class="toDoListContainer">
       <h1>To do List: </h1>
       <input placeholder="Enter something to do..." type="text" id="toDoInput">
       <button type="button" name="addButton" id="addButton">Add</button>
-      <button type="button" name="removeButton" id="removeButton">Remove</button>
-      <ul class="toDoList"></ul>
+      <ul class="toDoList">
+        <li style="display:none">
+          <div class="toDoContainer">
+            <p>Dummy</p>
+            <input type="checkbox" name="" value="">
+            <button type="button" name="button" class="removeButton">x</button>
+          </div>
+        </li>
+      </ul>
     </div>
 
     <script type="text/javascript" src="toDo.js"></script>
