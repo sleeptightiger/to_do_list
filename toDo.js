@@ -1,13 +1,9 @@
 let newToDo = document.querySelector('#toDoInput');
-const addButton = document.querySelector('#addButton');
+const addToDo = document.querySelector('#addButton');
 const lineOut = document.querySelector('.strike');
 const list = document.querySelector('ul');
 
-addButton.addEventListener('click', () => {
-  const li = document.createElement('li');
-
-  const div = document.createElement('div');
-  div.className = "toDoContainer";
+function attachListItemElements(li) {
 
   const p = document.createElement('p');
   p.textContent = newToDo.value;
@@ -22,13 +18,19 @@ addButton.addEventListener('click', () => {
   removeButton.textContent = 'x';
   removeButton.className = "removeButton";
 
+  li.appendChild(p);
+  li.appendChild(input);
+  li.appendChild(removeButton);
 
-  li.appendChild(div);
-  div.appendChild(p);
-  div.appendChild(input);
-  div.appendChild(removeButton);
+
+}
+
+addToDo.addEventListener('click', () => {
+
+  const li = document.createElement('li');
+
+  attachListItemElements(li);
   list.appendChild(li);
-
   newToDo.value = '';
 
 });
@@ -48,7 +50,7 @@ list.addEventListener('change', (event) => {
 
 list.addEventListener('click', (event) => {
   if(event.target.tagName == 'BUTTON') {
-    let item = event.target.parentNode.parentNode;
+    let item = event.target.parentNode;
     list.removeChild(item);
   }
 
